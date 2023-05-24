@@ -6,21 +6,29 @@ import Image from 'next/image';
 import { DeleteFilled } from '@ant-design/icons/lib/icons';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 
 
 const CartScreen = () => {
 const {state, dispatch}= useContext(Store)
- const { cart : {cartItems},} = state;
+const { cart : {cartItems},} = state;
 const router = useRouter();
  
 const removeCartHandller =(item)=>{
 dispatch({ type : 'REMOVE_ITEM', payload : item});
  }
-
-const updateCartHandler =(item, qty)=>{
+const updateCartHandler = async(item, qty)=>{
   const quantity =Number(qty);
+  const {data} = await axios.get(`/api/products/${item._id}`);
+if(data.countInStock< quantity){
+  toast.error('Product out of Stock')
+}
+else{
   dispatch ({type : 'ADD_ITEM', payload: {...item, quantity}})
+  toast.success('Product Added to stock')
 
+}
 }
   return (
 <Layout title="Shopping Cart">

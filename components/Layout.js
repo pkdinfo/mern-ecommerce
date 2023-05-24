@@ -32,9 +32,10 @@ return (
     <Head>
         <title>{title? title : 'Home Page '}</title>            
     </Head>
+       <ToastContainer className='h-5 w-5' position='bottom-center' limit={1}/>
     <div className='flex min-h-screen flex-col justify-between text-lg'>
         <header>
-          <ToastContainer position='bottom-center' limit={1}/>
+       
           <nav className='flex h-15 justify-between shadow-md'>
             <Link href='/' className='font-serif p-2'>E-Commerece</Link>
           <div className=' flex justify-between px-7 py-2'>
@@ -83,6 +84,7 @@ return (
         </header>
         <main className='container m-auto mt-4 px-4'>{children}
         </main>
+        
         <footer className='flex justify-center shadow-inner h-14'> @2023 Copyright</footer>
         </div>
 </div>

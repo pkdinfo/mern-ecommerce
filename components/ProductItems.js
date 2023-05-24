@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 
- const ProductItems = ({products}) => {
+ const ProductItems = ({products, addToCarthandller}) => {
   return (
     <>
     <div className='card'>
@@ -23,7 +23,7 @@ import Link from 'next/link';
         </Link>
         <p>{products.brand}</p>
         <p>$ {products.price}</p>
-    <button className='primary_button' type='button'>Add To Cart</button>
+    <button className='primary_button' type='button' onClick={()=>addToCarthandller(products)}>Add To Cart</button>
     </div>
     </div>
     </>
