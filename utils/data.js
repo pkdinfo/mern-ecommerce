@@ -6,7 +6,7 @@ const data ={
         {
             name : 'Pravin',
             email : 'pkd@gmail.com',
-            postalcode: '226024',
+            postalCode: '226024',
             password : bcrypt.hashSync('123456'),
             isAdmin : true,
         },
@@ -16,7 +16,7 @@ const data ={
             name : 'Swastik',
             email : 'swastik@gmail.com',
             password : bcrypt.hashSync('1234'),
-            postalcode: '226024',
+            postalCode: '226024',
             isAdmin : true,
         }
     ],

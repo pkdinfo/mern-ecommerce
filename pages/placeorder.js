@@ -36,7 +36,11 @@ export default function PlaceOrderScreen() {
 
   const placeOrderHandler = async () => {
     try {
+
       setLoading(true);
+      console.log("placorder handller clicked",  cartItems, shippingAddress,  )
+      console.log("🛺🛺", paymentMethod, itemsPrice, shippingPrice, totalPrice, taxPrice,shippingAddress.fullName, shippingAddress.address, shippingAddress.postalCode, shippingAddress.country, shippingAddress.city)
+
       const { data } = await axios.post('/api/orders', {
         orderItems: cartItems,
         shippingAddress,
@@ -59,6 +63,7 @@ export default function PlaceOrderScreen() {
     } catch (err) {
       setLoading(false);
       toast.error(getError(err));
+      console.log("placorder handller catch")
     }
   };
 
@@ -79,6 +84,7 @@ export default function PlaceOrderScreen() {
                 {shippingAddress.fullName}, {shippingAddress.address},{' '}
                 {shippingAddress.city}, {shippingAddress.postalCode},{' '}
                 {shippingAddress.country}
+               
               </div>
               <div>
                 <Link href="/shipping">Edit</Link>
@@ -121,10 +127,12 @@ export default function PlaceOrderScreen() {
 
                         </Link>
                       </td>
+                      
                       <td className=" p-5 text-right">{item.quantity}</td>
                       <td className="p-5 text-right">${item.price}</td>
                       <td className="p-5 text-right">
                         ${item.quantity * item.price}
+                      
                       </td>
                     </tr>
                   ))}
@@ -167,7 +175,7 @@ export default function PlaceOrderScreen() {
                   <button
                     disabled={loading}
                     onClick={placeOrderHandler}
-                    className="primary-button w-full"
+                    className="primary_button w-full"
                   >
                     {loading ? 'Loading...' : 'Place Order'}
                   </button>

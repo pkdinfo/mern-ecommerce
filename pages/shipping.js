@@ -29,16 +29,17 @@ useEffect(() => {
   setValue('fullName', shippingAddress.fullName);
   setValue('address', shippingAddress.address);
   setValue('city', shippingAddress.city);
-  setValue('postalcode', shippingAddress.postalcode);
+  setValue('postalCode', shippingAddress.postalCode);
   setValue('country', shippingAddress.country);
 },[setValue, shippingAddress]);
 
+console.log("POSTAL_CODE",shippingAddress.postalCode)
 
-const submitHandler =({fullName, city,postalcode,address,country})=>{
+const submitHandler =({fullName, city,postalCode,address,country})=>{
 
   dispatch({
     type :'SAVE_SHIPPING_ADDRESS',
-    payload: {fullName, address, postalcode, country, city},
+    payload: {fullName, address, postalCode, country, city},
   });
 
   Cookies.set(
@@ -48,7 +49,7 @@ const submitHandler =({fullName, city,postalcode,address,country})=>{
       fullName,
       address,
       city,
-      postalcode,
+      postalCode,
       country,
     },
   }),
@@ -84,7 +85,7 @@ const submitHandler =({fullName, city,postalcode,address,country})=>{
       </div>
       <div className='mb-4'>
         <label>Postal Code</label>
-        <input className='w-full' id='postalcode' {...register('postalcode', {required: "please enter city name"})}/>
+        <input className='w-full' id='postalCode' {...register('postalCode', {required: "please enter city name"})}/>
       </div>
 
       <div className='mb-4'>
